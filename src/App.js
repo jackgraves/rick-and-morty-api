@@ -1,5 +1,6 @@
 import './App.css';
-import {Component} from "react";
+import React, {Component} from "react";
+import PropTypes from 'prop-types';
 
 function Character(props) {
   return (
@@ -13,6 +14,14 @@ function Character(props) {
         </div>
     </div>
   );
+}
+
+Character.propTypes = {
+  avatar: PropTypes.string,
+  name: PropTypes.string,
+  species: PropTypes.string,
+  gender: PropTypes.string,
+  location: PropTypes.string,
 }
 
 function InformationMessage(props) {
@@ -53,7 +62,7 @@ class App extends Component {
       name: '',
       status: 'Alive',
       results: null,
-      isSubmitted: false
+      isSubmitted: false,
     }
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -66,7 +75,7 @@ class App extends Component {
     const name = target.name;
 
     this.setState({
-      [name]: value
+      [name]: value,
     });
   }
 
@@ -78,7 +87,7 @@ class App extends Component {
         // isSubmitted updated to manage the search message shown upon opening the app
         this.setState({
           results: data.results,
-          isSubmitted: true
+          isSubmitted: true,
         });
       })
       .catch(console.log);
