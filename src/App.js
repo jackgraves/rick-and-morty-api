@@ -133,7 +133,7 @@ class App extends Component {
           </form>
         </nav>
           <div className="container">
-            <div className="card-deck card-container">
+            <div className="card-deck card-container justify-content-center">
               {characters}
             </div>
             <InformationMessage displayNoResults={displayNoResults} displayNotSearched={displayNotSearched} />
