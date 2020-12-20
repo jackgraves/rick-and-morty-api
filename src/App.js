@@ -122,14 +122,14 @@ class App extends Component {
       <div className="App">
         <nav className="navbar navbar-dark">
           <p className="navbar-brand">Rick and Morty Character Search</p>
-          <form className="form-inline" onSubmit={this.handleSubmit}>
-            <input className="form-control mx-1" type="text" placeholder="Character Name" name="name" value={this.state.name} onChange={this.handleInputChange} />
-            <select className="custom-select mx-1" name="status" value={this.state.status} onChange={this.handleInputChange}>
+          <form className="form-inline justify-content-center search-form" onSubmit={this.handleSubmit}>
+            <input className="form-control mx-1 input-field" type="text" placeholder="Character Name" name="name" value={this.state.name} onChange={this.handleInputChange} />
+            <select className="custom-select mx-1 input-field" name="status" value={this.state.status} onChange={this.handleInputChange}>
               <option value="Alive">Alive</option>
               <option value="Dead">Dead</option>
               <option value="Unknown">Unknown</option>
             </select>
-            <input className="btn btn-secondary mx-1" type="submit" value="Submit" />
+            <input className="btn btn-secondary mx-1 input-field" type="submit" value="Submit" />
           </form>
         </nav>
           <div className="container">

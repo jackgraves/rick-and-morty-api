@@ -26,3 +26,28 @@ body {
 .information-message {
   margin-top: 30px;
 }
+
+@media (max-width: 768px) {
+    .input-field {
+      display: block;
+    }
+    .search-form {
+      margin: 0 auto;
+      text-align: center;
+    }
+    .navbar {
+      text-align: center;
+      margin: auto;
+      justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+  .input-field {
+    margin-top: 5px;
+  }
+
+  .search-form {
+    max-width: 250px;
+  }
+}
