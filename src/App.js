@@ -12,11 +12,11 @@ function Character(props) {
           <p className="card-text">Location: {props.location}</p>
         </div>
     </div>
-  )
+  );
 }
 
 function InformationMessage(props) {
-  if (props.displayNotSearched){
+  if (props.displayNotSearched) {
     return (
       <div className="information-container">
         <svg xmlns="http://www.w3.org/2000/svg" width="250" height="250" fill="currentColor" className="bi bi-search"
@@ -28,7 +28,7 @@ function InformationMessage(props) {
         </svg>
         <h3 className="information-message"> Please enter a character and status in the top right to search. </h3>
       </div>
-    )
+    );
   } else if (props.displayNoResults) {
     return (
       <div className="information-container">
@@ -39,9 +39,9 @@ function InformationMessage(props) {
         </svg>
         <h3 className="information-message"> No results found. </h3>
       </div>
-    )
+    );
   } else {
-    return ("")
+    return ("");
   }
 }
 
@@ -62,7 +62,7 @@ class App extends Component {
 
   handleInputChange(event) {
     const target = event.target;
-    const value = target.value
+    const value = target.value;
     const name = target.name;
 
     this.setState({
@@ -75,14 +75,14 @@ class App extends Component {
     fetch('https://rickandmortyapi.com/api/character?name=' + this.state.name + '&status=' + this.state.status)
       .then(res => res.json())
       .then((data) => {
+        // isSubmitted updated to manage the search message shown upon opening the app
         this.setState({
           results: data.results,
-        })
+          isSubmitted: true
+        });
       })
-      .catch(console.log)
-    this.setState({
-      isSubmitted: true
-    });
+      .catch(console.log);
+
     event.preventDefault();
   }
 
@@ -91,6 +91,7 @@ class App extends Component {
     let displayNoResults = false;
     let displayNotSearched = false;
 
+    // Create an array of all character cards if this has been fetched
     if (this.state.results) {
       this.state.results.forEach((obj) => {
         characters.push(<Character
@@ -100,13 +101,14 @@ class App extends Component {
           gender={obj.gender}
           location={obj.location.name}
           avatar={obj.image}
-        />)
-      })
+        />);
+      });
     } else if (this.state.isSubmitted) {
       displayNoResults = true;
     } else {
       displayNotSearched = true;
     }
+
     return (
       <div className="App">
         <nav className="navbar navbar-dark">
@@ -125,12 +127,11 @@ class App extends Component {
             <div className="card-deck card-container">
               {characters}
             </div>
-            <InformationMessage displayNoResults={displayNoResults} displayNotSearched={displayNotSearched}/>
-            {/*<NoSearchMade displayMessage={displayNotSearched} />*/}
+            <InformationMessage displayNoResults={displayNoResults} displayNotSearched={displayNotSearched} />
         </div>
       </div>
-    )
-  };
+    );
+  }
 }
 
 export default App;
